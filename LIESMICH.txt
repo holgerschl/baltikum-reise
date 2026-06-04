@@ -1,0 +1,14 @@
+BALTIKUM-REISEPLAN -- Riga & das Meer (Tallinn -> Riga/Strand -> Vilnius)
+
+Inhalt:
+  baltikum-riga-strand.html   <- der Reiseplan (im Browser oeffnen)
+  bilder/                     <- Ordner fuer die Fotos
+  bilder-herunterladen.sh / .command / .bat  <- laedt die Fotos automatisch
+  BILDER.txt                  <- Direktlinks + Kurzanleitung
+
+Schnellstart:
+  1) Ordner entpacken (hast du schon).
+  2) Download-Skript fuer dein System ausfuehren (siehe BILDER.txt).
+  3) baltikum-riga-strand.html oeffnen -- fertig.
+  Ohne Fotos funktioniert die Seite trotzdem (dann mit Illustrationen).
+  Eigene Fotos? Einfach gleichnamig in bilder/ ablegen.

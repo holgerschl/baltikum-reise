@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baltikum mit Riga-Schwerpunkt — Tallinn → Riga & Strand → Vilnius · 6.–14. September</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Spectral:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sea:        #0c3b4a;   /* tiefes Ostseeblau */
+    --sea-deep:   #06222b;
+    --teal:       #2a7d8c;
+    --amber:      #d99a2b;   /* Bernstein */
+    --amber-soft: #e9c171;
+    --sand:       #f4ecdc;   /* Pergament / Sand */
+    --sand-2:     #ece0c6;
+    --ink:        #1b2327;
+    --ink-soft:   #455055;
+    --line:       #cbb98e;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Spectral',Georgia,serif;
+    color:var(--ink);
+    background:
+      radial-gradient(120% 80% at 80% -10%, rgba(217,154,43,.10), transparent 60%),
+      radial-gradient(120% 90% at 0% 110%, rgba(42,125,140,.12), transparent 55%),
+      var(--sand);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  /* ---------- Wortmarke / Akzente ---------- */
+  .eyebrow{
+    font-family:'Spectral',serif;
+    text-transform:uppercase;
+    letter-spacing:.32em;
+    font-size:.72rem;
+    font-weight:600;
+    color:var(--amber);
+  }
+  .display{
+    font-family:'Fraunces',serif;
+    font-weight:900;
+    line-height:.96;
+    letter-spacing:-.01em;
+  }
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    position:relative;
+    background:
+      radial-gradient(140% 120% at 70% 0%, rgba(42,125,140,.55), transparent 55%),
+      linear-gradient(180deg, var(--sea-deep), var(--sea));
+    color:var(--sand);
+    padding:clamp(3.5rem,9vw,8rem) clamp(1.5rem,6vw,7rem) 0;
+    overflow:hidden;
+  }
+  header.hero .compass{
+    position:absolute; top:clamp(1.5rem,4vw,3rem); right:clamp(1.5rem,5vw,5rem);
+    width:clamp(80px,12vw,150px); height:auto; opacity:.28;
+    animation:spin 90s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  .hero-eyebrow{color:var(--amber-soft);}
+  header.hero h1{
+    font-family:'Fraunces',serif; font-weight:900;
+    font-size:clamp(3rem,12vw,8.5rem);
+    line-height:.9; letter-spacing:-.02em;
+    margin:.4em 0 .1em;
+  }
+  header.hero h1 em{
+    font-style:italic; font-weight:500; color:var(--amber-soft);
+    display:block; font-size:.42em; letter-spacing:.01em; margin-top:.35em;
+  }
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:1.4rem 2.6rem;
+    margin-top:2.2rem; padding-bottom:3rem;
+    font-size:1.05rem; color:rgba(244,236,220,.85);
+  }
+  .hero-meta b{color:var(--sand); font-weight:600;}
+  .hero-meta .chip{display:flex; flex-direction:column; gap:.15rem;}
+  .hero-meta .chip span{font-family:'Spectral'; text-transform:uppercase; letter-spacing:.2em; font-size:.62rem; color:var(--amber-soft);}
+
+  .wave{display:block; width:100%; height:auto; margin-bottom:-1px;}
+
+  /* ---------- LAYOUT ---------- */
+  main{
+    max-width:1080px; margin:0 auto;
+    padding:clamp(2.5rem,6vw,5rem) clamp(1.5rem,5vw,3rem);
+  }
+  section{margin-bottom:clamp(3rem,7vw,5.5rem);}
+
+  .section-head{margin-bottom:2rem;}
+  .section-head h2{
+    font-family:'Fraunces',serif; font-weight:900;
+    font-size:clamp(2rem,5vw,3.4rem);
+    color:var(--sea); line-height:1; letter-spacing:-.01em;
+    margin:.25em 0 .15em;
+  }
+  .section-head p.lede{
+    font-size:1.12rem; color:var(--ink-soft); max-width:60ch; font-style:italic;
+  }
+
+  /* ---------- ÜBERBLICK ---------- */
+  .overview{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:1px; background:var(--line);
+    border:1px solid var(--line); border-radius:14px; overflow:hidden;
+  }
+  .overview .cell{background:var(--sand); padding:1.4rem 1.5rem;}
+  .overview .cell .num{font-family:'Fraunces',serif; font-weight:900; font-size:2.4rem; color:var(--amber); line-height:1;}
+  .overview .cell .lab{display:block; margin-top:.35rem; font-size:.85rem; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.12em;}
+
+  /* ---------- STADT-KARTEN ---------- */
+  .city{
+    position:relative;
+    background:linear-gradient(180deg,#fff,var(--sand));
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:clamp(1.6rem,4vw,2.6rem);
+    box-shadow:0 20px 45px -30px rgba(12,59,74,.55);
+  }
+  .city + .city{margin-top:1.6rem;}
+  .city .ribbon{
+    position:absolute; top:0; left:clamp(1.6rem,4vw,2.6rem);
+    transform:translateY(-50%);
+    background:var(--sea); color:var(--sand);
+    font-family:'Spectral'; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
+    font-size:.7rem; padding:.45rem 1rem; border-radius:999px;
+  }
+  .city .city-top{
+    display:flex; flex-wrap:wrap; align-items:baseline; gap:.6rem 1rem;
+    margin-bottom:.4rem;
+  }
+  .city h3{
+    font-family:'Fraunces',serif; font-weight:900; color:var(--sea);
+    font-size:clamp(1.8rem,4vw,2.8rem); line-height:1;
+  }
+  .city .country{font-style:italic; color:var(--teal); font-size:1.05rem;}
+  .city .tag{
+    margin-left:auto; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--amber); border:1px solid var(--amber); border-radius:999px; padding:.3rem .8rem;
+  }
+  .city .intro{color:var(--ink-soft); margin:.6rem 0 1.3rem; max-width:65ch;}
+
+  .sights{list-style:none; display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:.85rem 1.6rem;}
+  .sights li{position:relative; padding-left:1.6rem; font-size:1rem;}
+  .sights li::before{
+    content:""; position:absolute; left:0; top:.55em;
+    width:.6rem; height:.6rem; background:var(--amber);
+    transform:rotate(45deg); border-radius:1px;
+  }
+  .sights li b{color:var(--ink); font-weight:600;}
+  .sights li span{display:block; color:var(--ink-soft); font-size:.9rem; line-height:1.45;}
+
+  /* ---------- OSTSEE-BLOCK ---------- */
+  .beach{
+    background:
+      radial-gradient(120% 130% at 85% 0%, rgba(42,125,140,.5), transparent 60%),
+      linear-gradient(180deg,var(--sea),var(--sea-deep));
+    color:var(--sand); border-radius:20px;
+    padding:clamp(1.8rem,5vw,3rem); position:relative; overflow:hidden;
+  }
+  .beach h3{font-family:'Fraunces',serif; font-weight:900; font-size:clamp(1.8rem,4.5vw,2.8rem); color:#fff; line-height:1.02;}
+  .beach .country{color:var(--amber-soft); font-style:italic;}
+  .beach p{color:rgba(244,236,220,.9); max-width:62ch; margin-top:.8rem;}
+  .beach .temp-row{
+    display:flex; flex-wrap:wrap; gap:1rem; margin:1.6rem 0 1.2rem;
+  }
+  .beach .temp{
+    background:rgba(244,236,220,.1); border:1px solid rgba(233,193,113,.4);
+    border-radius:12px; padding:.9rem 1.2rem; min-width:130px;
+  }
+  .beach .temp .v{font-family:'Fraunces',serif; font-weight:900; font-size:1.9rem; color:var(--amber-soft); line-height:1;}
+  .beach .temp .k{display:block; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:rgba(244,236,220,.7); margin-top:.3rem;}
+  .beach ul{margin:.4rem 0 0 1.1rem; color:rgba(244,236,220,.92);}
+  .beach ul li{margin:.35rem 0;}
+  .beach .note{
+    margin-top:1.4rem; font-size:.92rem; font-style:italic;
+    border-left:3px solid var(--amber); padding-left:1rem; color:var(--amber-soft);
+  }
+
+  /* ---------- ITINERAR ---------- */
+  .itin{display:flex; flex-direction:column; gap:0;}
+  .day{
+    display:grid; grid-template-columns:auto 1fr; gap:1.4rem;
+    padding:1.3rem 0; border-bottom:1px dashed var(--line);
+  }
+  .day:last-child{border-bottom:none;}
+  .day .date{
+    text-align:center; min-width:84px;
+  }
+  .day .date .d{font-family:'Fraunces',serif; font-weight:900; font-size:1.9rem; color:var(--sea); line-height:.9;}
+  .day .date .m{font-size:.7rem; text-transform:uppercase; letter-spacing:.18em; color:var(--amber);}
+  .day .date .wd{display:block; font-size:.78rem; color:var(--ink-soft); margin-top:.2rem;}
+  .day .body h4{font-family:'Fraunces',serif; font-weight:600; font-size:1.25rem; color:var(--ink); margin-bottom:.2rem;}
+  .day .body p{color:var(--ink-soft); font-size:.98rem;}
+  .day .body .pill{
+    display:inline-block; margin-top:.5rem; font-size:.7rem; letter-spacing:.1em; text-transform:uppercase;
+    background:var(--sand-2); color:var(--teal); border-radius:999px; padding:.25rem .7rem;
+  }
+  .day .body .pill.move{background:rgba(42,125,140,.14); color:var(--sea);}
+  .day .body .pill.swim{background:rgba(217,154,43,.18); color:#a16b12;}
+
+  /* ---------- PRAKTISCH ---------- */
+  .tips{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.2rem;}
+  .tip{
+    background:#fff; border:1px solid var(--line); border-radius:14px; padding:1.4rem;
+  }
+  .tip h4{font-family:'Fraunces',serif; font-weight:600; color:var(--sea); font-size:1.15rem; margin-bottom:.4rem; display:flex; align-items:center; gap:.5rem;}
+  .tip h4 .ic{color:var(--amber); font-size:1.3rem;}
+  .tip p{font-size:.94rem; color:var(--ink-soft);}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--sea-deep); color:rgba(244,236,220,.7);
+    text-align:center; padding:2.4rem 1.5rem; font-size:.9rem;
+  }
+  footer .display{color:var(--amber-soft); font-size:1.5rem; display:block; margin-bottom:.4rem;}
+
+  /* ---------- Reveal-Animation ---------- */
+  .reveal{opacity:0; transform:translateY(22px); animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards;}
+  @keyframes rise{to{opacity:1; transform:none;}}
+  section:nth-of-type(1) .reveal{animation-delay:.05s;}
+  .hero-meta .chip{opacity:0; animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards;}
+  .hero-meta .chip:nth-child(1){animation-delay:.2s;}
+  .hero-meta .chip:nth-child(2){animation-delay:.32s;}
+  .hero-meta .chip:nth-child(3){animation-delay:.44s;}
+  .hero-meta .chip:nth-child(4){animation-delay:.56s;}
+
+  /* ---------- Illustrationen ---------- */
+  .illus{
+    border-radius:12px; overflow:hidden; margin-bottom:1.4rem;
+    box-shadow:0 12px 26px -16px rgba(12,59,74,.55);
+    border:1px solid var(--line);
+    position:relative; z-index:1;
+  }
+  .illus svg{display:block; width:100%; height:auto; position:relative; z-index:0;}
+  .illus .photo{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:2;}
+  .beach .illus{border-color:rgba(233,193,113,.35);}
+  .hero-skyline{
+    display:block; width:100%; height:auto; margin-top:2.4rem; margin-bottom:-2px;
+    opacity:.9;
+  }
+
+  @media (max-width:560px){
+    .day{grid-template-columns:1fr; gap:.5rem;}
+    .day .date{display:flex; align-items:baseline; gap:.5rem; text-align:left; min-width:0;}
+    .day .date .wd{margin:0;}
+  }
+  @media print{
+    body{background:#fff;}
+    header.hero{color:#06222b; background:#fff; border-bottom:3px solid var(--amber);}
+    .hero-eyebrow,header.hero h1 em{color:var(--amber);}
+    header.hero h1{color:var(--sea);}
+    .hero-meta{color:var(--ink-soft);} .hero-meta b{color:var(--ink);}
+    .beach{color:var(--ink); background:var(--sand-2); border:1px solid var(--line);}
+    .beach h3,.beach p,.beach ul,.beach .temp .v{color:var(--ink);}
+    .compass,.wave{display:none;}
+    .reveal{opacity:1; transform:none; animation:none;}
+    section{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <svg class="compass" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.2">
+    <circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="36"/>
+    <polygon points="50,8 56,50 50,92 44,50" fill="currentColor" stroke="none" opacity=".5"/>
+    <polygon points="8,50 50,44 92,50 50,56" fill="currentColor" stroke="none" opacity=".25"/>
+    <circle cx="50" cy="50" r="3" fill="currentColor" stroke="none"/>
+  </svg>
+  <p class="eyebrow hero-eyebrow">Variante · Schwerpunkt Riga & Strand</p>
+  <h1 class="display">Riga &amp; das Meer
+    <em>Tallinn rein · die meiste Zeit in Riga &amp; Jūrmala · Vilnius raus</em>
+  </h1>
+  <div class="hero-meta">
+    <div class="chip"><span>Zeitraum</span><b>6. – 14. September</b></div>
+    <div class="chip"><span>Anreise</span><b>Flug → Tallinn (TLL)</b></div>
+    <div class="chip"><span>Schwerpunkt</span><b>Riga + Jūrmala, 4 Nächte</b></div>
+    <div class="chip"><span>Abreise</span><b>Flug ab Vilnius (VNO)</b></div>
+  </div>
+  <svg class="hero-skyline" viewBox="0 0 1440 110" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g fill="#0a2f3a">
+      <path d="M96,110 V70 C96,58 104,51 111,51 C118,51 126,58 126,70 V110 Z"/>
+      <rect x="98" y="44" width="26" height="26"/><path d="M98,44 C92,28 102,12 111,8 C120,12 130,28 124,44 Z"/><rect x="108" y="-2" width="6" height="12"/>
+      <rect x="232" y="62" width="40" height="48"/><polygon points="226,62 252,30 278,62"/>
+      <rect x="352" y="50" width="30" height="60"/><polygon points="352,52 367,8 382,52"/>
+      <rect x="520" y="56" width="56" height="54"/><polygon points="520,56 548,26 576,56"/>
+      <rect x="582" y="66" width="50" height="44"/><polygon points="582,66 607,40 632,66"/>
+      <rect x="724" y="40" width="34" height="70"/><polygon points="724,42 741,4 758,42"/>
+      <rect x="884" y="64" width="92" height="46"/><polygon points="884,64 930,40 976,64"/>
+      <rect x="992" y="56" width="28" height="54"/><path d="M992,56 C986,42 994,24 1006,21 C1018,24 1026,42 1020,56 Z"/>
+      <rect x="1116" y="58" width="40" height="52"/>
+      <rect x="1278" y="50" width="5" height="60"/><polygon points="1280,18 1262,58 1298,58"/>
+      <rect x="1326" y="64" width="4" height="46"/><polygon points="1328,38 1314,72 1342,72"/>
+    </g>
+    <g fill="#e9c171" opacity=".55"><rect x="238" y="74" width="8" height="11"/><rect x="256" y="74" width="8" height="11"/><rect x="534" y="72" width="8" height="11"/><rect x="556" y="72" width="8" height="11"/><rect x="900" y="78" width="9" height="12"/><rect x="924" y="78" width="9" height="12"/><rect x="948" y="78" width="9" height="12"/><rect x="1126" y="72" width="9" height="11"/><rect x="1140" y="72" width="9" height="11"/></g>
+  </svg>
+  <svg class="wave" viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,48 C240,90 480,10 720,40 C960,70 1200,18 1440,46 L1440,90 L0,90 Z" fill="#f4ecdc"/>
+  </svg>
+</header>
+
+<main>
+
+  <!-- ÜBERBLICK -->
+  <section>
+    <div class="section-head reveal">
+      <p class="eyebrow">Die Idee</p>
+      <h2>Riga im Zentrum</h2>
+      <p class="lede">Riga liegt mittig zwischen Tallinn und Vilnius — deshalb fliegt ihr im Norden ein, im Süden aus und verbringt das Herzstück der Reise in Riga, mit Jūrmala (dem Stadtstrand) direkt vor der Tür.</p>
+    </div>
+    <div class="overview reveal">
+      <div class="cell"><span class="num">4</span><span class="lab">Nächte Riga & Strand</span></div>
+      <div class="cell"><span class="num">~25 km</span><span class="lab">Riga → Jūrmala</span></div>
+      <div class="cell"><span class="num">€</span><span class="lab">Euro überall</span></div>
+      <div class="cell"><span class="num">→</span><span class="lab">Einweg, kein Zurück</span></div>
+      <div class="cell"><span class="num">33 km</span><span class="lab">Sandstrand Jūrmala</span></div>
+    </div>
+  </section>
+
+  <!-- STÄDTE -->
+  <section>
+    <div class="section-head reveal">
+      <p class="eyebrow">Was man sehen kann</p>
+      <h2>Die drei Städte</h2>
+      <p class="lede">In Reisereihenfolge: Tallinn mittelalterlich zum Auftakt, Riga als jugendstiliges Herzstück, Vilnius barock zum Abschluss.</p>
+    </div>
+
+    <article class="city reveal">
+      <span class="ribbon">1 · Auftakt</span>
+      <div class="illus"><img class="photo" src="tallinn.jpg" alt="Foto: Altstadt von Tallinn" loading="lazy" onerror="this.remove()"><svg viewBox="0 0 800 230" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration der mittelalterlichen Skyline von Tallinn">
+        <defs><linearGradient id="tlnSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c3b4a"/><stop offset=".62" stop-color="#2a7d8c"/><stop offset="1" stop-color="#e9c171"/></linearGradient></defs>
+        <rect width="800" height="230" fill="url(#tlnSky)"/>
+        <circle cx="668" cy="56" r="29" fill="#f4ecdc" opacity=".92"/>
+        <path d="M0,170 Q160,152 330,166 T660,160 T800,168 V230 H0 Z" fill="#0c3b4a" opacity=".4"/>
+        <g fill="#06222b">
+          <path d="M92,185 V150 C92,138 100,131 107,131 C114,131 122,138 122,150 V185 Z"/>
+          <path d="M158,185 V148 C158,134 167,126 174,126 C181,126 190,134 190,148 V185 Z"/>
+          <rect x="120" y="120" width="38" height="65"/>
+          <path d="M120,121 C113,98 124,72 139,64 C154,72 165,98 158,121 Z"/>
+          <rect x="136" y="42" width="6" height="22"/><rect x="130" y="48" width="18" height="5"/>
+        </g>
+        <rect x="300" y="150" width="200" height="35" fill="#06222b"/>
+        <g fill="#06222b"><rect x="306" y="143" width="11" height="9"/><rect x="328" y="143" width="11" height="9"/><rect x="350" y="143" width="11" height="9"/><rect x="372" y="143" width="11" height="9"/><rect x="448" y="143" width="11" height="9"/><rect x="470" y="143" width="11" height="9"/><rect x="486" y="143" width="11" height="9"/></g>
+        <rect x="288" y="118" width="44" height="67" fill="#06222b"/><polygon points="282,119 310,80 338,119" fill="#d99a2b"/>
+        <rect x="468" y="110" width="48" height="75" fill="#06222b"/><polygon points="462,111 492,68 522,111" fill="#d99a2b"/>
+        <g fill="#06222b"><rect x="614" y="120" width="38" height="65"/><polygon points="614,122 633,40 652,122"/><rect x="630" y="26" width="5" height="16"/></g>
+      </svg></div>
+      <div class="city-top">
+        <h3>Tallinn</h3><span class="country">Estland</span>
+        <span class="tag">Mittelalter pur</span>
+      </div>
+      <p class="intro">Die wohl besterhaltene mittelalterliche Altstadt Nordeuropas — Stadtmauern, Türme und enge Gassen, dazu eine überraschend hippe Kreativszene.</p>
+      <ul class="sights">
+        <li><b>Altstadt & Stadtmauer</b><span>Wehrtürme, das Rathaus und Raekoja plats (Rathausplatz).</span></li>
+        <li><b>Domberg (Toompea)</b><span>Oberstadt mit Parlament und Burg.</span></li>
+        <li><b>Alexander-Newski-Kathedrale</b><span>Russisch-orthodoxe Zwiebeltürme gegenüber dem Schloss.</span></li>
+        <li><b>Kohtuotsa-Aussicht</b><span>Der Postkarten-Blick über die roten Dächer.</span></li>
+        <li><b>Telliskivi Creative City</b><span>Altes Fabrikgelände voller Cafés, Street-Art, Markt.</span></li>
+      </ul>
+    </article>
+
+    <article class="city reveal">
+      <span class="ribbon">2 · Herzstück</span>
+      <div class="illus"><img class="photo" src="riga.jpg" alt="Foto: Altstadt von Riga" loading="lazy" onerror="this.remove()"><svg viewBox="0 0 800 230" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration von Riga mit Kirchturm und Giebelhäusern">
+        <defs><linearGradient id="rigSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c3b4a"/><stop offset=".6" stop-color="#2a7d8c"/><stop offset="1" stop-color="#e9c171"/></linearGradient></defs>
+        <rect width="800" height="230" fill="url(#rigSky)"/>
+        <g stroke="#e9c171" stroke-width="2.4" fill="none" opacity=".7"><circle cx="120" cy="58" r="16"/><path d="M120,30 V14 M120,102 V86 M92,58 H76 M148,58 H164 M100,38 L88,26 M140,38 L152,26 M100,78 L88,90 M140,78 L152,90"/></g>
+        <path d="M0,172 Q200,156 420,168 T800,164 V230 H0 Z" fill="#0c3b4a" opacity=".4"/>
+        <g fill="#06222b">
+          <rect x="278" y="96" width="74" height="89"/><polygon points="278,96 315,52 352,96"/>
+          <rect x="356" y="112" width="66" height="73"/><polygon points="356,112 389,74 422,112"/>
+          <rect x="426" y="104" width="60" height="81"/>
+          <polygon points="426,104 456,72 486,104"/>
+        </g>
+        <g fill="#e9c171" opacity=".85"><rect x="296" y="120" width="12" height="16"/><rect x="322" y="120" width="12" height="16"/><rect x="374" y="132" width="11" height="15"/><rect x="397" y="132" width="11" height="15"/><rect x="444" y="126" width="11" height="15"/></g>
+        <g fill="#06222b"><rect x="624" y="118" width="42" height="67"/><polygon points="624,120 645,54 666,120"/><path d="M645,54 C636,46 636,32 645,24 C654,32 654,46 645,54 Z"/><rect x="642" y="8" width="6" height="18"/></g>
+      </svg></div>
+      <div class="city-top">
+        <h3>Riga</h3><span class="country">Lettland</span>
+        <span class="tag">Eure Basis</span>
+      </div>
+      <p class="intro">Die größte Stadt des Baltikums: kompakte Hansestadt-Altstadt plus das weltweit dichteste Jugendstil-Ensemble — und mit Jūrmala der schönste Strand des Baltikums direkt nebenan. Hier verbringt ihr die meiste Zeit.</p>
+      <ul class="sights">
+        <li><b>Altstadt (Vecrīga)</b><span>UNESCO-Welterbe mit Kopfsteinpflaster und Gildehäusern.</span></li>
+        <li><b>Schwarzhäupterhaus</b><span>Prachtfassade am Rathausplatz, ikonisches Wahrzeichen.</span></li>
+        <li><b>Petrikirche</b><span>Aussichtsplattform mit Rundblick über die Dächer.</span></li>
+        <li><b>Jugendstilviertel</b><span>Alberta iela & Elizabetes iela — Fassaden von Eisenstein.</span></li>
+        <li><b>Zentralmarkt</b><span>Riesiger Markt in alten Zeppelinhallen, gut für Mittag.</span></li>
+        <li><b>„Drei Brüder“ & Dom</b><span>Älteste Wohnhäuser und mächtiger Backstein-Dom.</span></li>
+      </ul>
+    </article>
+
+    <article class="city reveal">
+      <span class="ribbon">3 · Abschluss</span>
+      <div class="illus"><img class="photo" src="vilnius.jpg" alt="Foto: Vilnius mit Gediminas-Turm" loading="lazy" onerror="this.remove()"><svg viewBox="0 0 800 230" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration von Vilnius mit Kathedrale und Gediminas-Turm">
+        <defs><linearGradient id="vilSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c3b4a"/><stop offset=".58" stop-color="#2a7d8c"/><stop offset="1" stop-color="#e9c171"/></linearGradient></defs>
+        <rect width="800" height="230" fill="url(#vilSky)"/>
+        <circle cx="150" cy="56" r="28" fill="#f4ecdc" opacity=".9"/>
+        <path d="M520,185 Q600,120 700,124 Q780,128 800,150 V185 Z" fill="#2f7a52"/>
+        <path d="M0,176 Q220,160 460,170 T800,168 V185 H0 Z" fill="#0c3b4a" opacity=".35"/>
+        <g fill="#06222b">
+          <rect x="262" y="128" width="150" height="57"/>
+          <polygon points="262,128 337,96 412,128"/>
+          <rect x="282" y="140" width="10" height="45"/><rect x="312" y="140" width="10" height="45"/><rect x="352" y="140" width="10" height="45"/><rect x="382" y="140" width="10" height="45"/>
+          <rect x="424" y="92" width="40" height="93"/><polygon points="424,92 444,58 464,92"/><rect x="441" y="44" width="6" height="14"/>
+        </g>
+        <g fill="#06222b"><rect x="492" y="120" width="34" height="65"/><path d="M492,120 C486,104 494,84 509,80 C524,84 532,104 526,120 Z"/><rect x="506" y="62" width="6" height="18"/></g>
+        <g><rect x="636" y="96" width="56" height="64" fill="#7a3b27"/><rect x="636" y="96" width="56" height="64" fill="#06222b" opacity=".25"/><g fill="#06222b"><rect x="644" y="84" width="9" height="12"/><rect x="662" y="84" width="9" height="12"/><rect x="680" y="84" width="9" height="12"/></g><rect x="660" y="60" width="4" height="26" fill="#06222b"/><polygon points="664,62 686,68 664,76" fill="#d99a2b"/></g>
+      </svg></div>
+      <div class="city-top">
+        <h3>Vilnius</h3><span class="country">Litauen</span>
+        <span class="tag">Barock & Bohème</span>
+      </div>
+      <p class="intro">Eine der größten Barock-Altstädte Osteuropas, entspannter und grüner als die Nachbarn — mit der selbsternannten Künstler­republik Užupis als Highlight.</p>
+      <ul class="sights">
+        <li><b>Altstadt (UNESCO)</b><span>Weitläufiges Gassennetz mit über 1.000 Baudenkmälern.</span></li>
+        <li><b>Kathedrale & Glockenturm</b><span>Klassizistischer Platz im Herzen der Stadt.</span></li>
+        <li><b>Gediminas-Turm</b><span>Burghügel mit dem besten Blick über Vilnius.</span></li>
+        <li><b>Užupis</b><span>Bohème-Viertel mit eigener „Verfassung“ an der Wand.</span></li>
+        <li><b>St.-Anna-Kirche</b><span>Filigrane Backsteingotik — Napoleons Liebling.</span></li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- SCHÖNSTE STOPS -->
+  <section>
+    <div class="section-head reveal">
+      <p class="eyebrow">Unterwegs & rundherum</p>
+      <h2>Die schönsten Stops</h2>
+      <p class="lede">Die Etappen lassen sich mit echten Highlights anreichern — und rund um Riga gibt es lohnende Tagesausflüge, falls ihr die Basis länger haltet.</p>
+    </div>
+
+    <article class="city reveal">
+      <span class="ribbon">Tallinn → Riga</span>
+      <div class="city-top"><h3>Auf dem Weg nach Süden</h3></div>
+      <ul class="sights">
+        <li><b>Pärnu (EE)</b><span>Estlands „Sommerhauptstadt": flacher Strand, Promenade, Holzvillen — idealer Mittags- oder Strandstopp etwa auf halber Strecke.</span></li>
+        <li><b>Lahemaa-Nationalpark (EE)</b><span>Küste, Moore, Herrenhäuser — schöner Abstecher östlich von Tallinn, wenn ihr früh los wollt.</span></li>
+      </ul>
+    </article>
+
+    <article class="city reveal">
+      <span class="ribbon">Rund um Riga</span>
+      <div class="city-top"><h3>Tagesausflüge von der Basis</h3></div>
+      <ul class="sights">
+        <li><b>Ķemeri-Nationalpark</b><span>Direkt hinter Jūrmala: der berühmte Moor-Bohlenweg (Großes Ķemeri-Moor) — perfekt mit einem Strandtag zu kombinieren.</span></li>
+        <li><b>Sigulda & Turaida</b><span>„Schweiz Vidzemes" im Gauja-Nationalpark: rote Turaida-Burg, Höhlen, Seilbahn übers Tal (~1 h ab Riga).</span></li>
+        <li><b>Cēsis</b><span>Hübsche Mittelalterstadt mit Burgruine, gut mit Sigulda zu verbinden.</span></li>
+        <li><b>Kap Kolka (Kolkasrags)</b><span>Wo der Rigaer Meerbusen auf die offene Ostsee trifft: wilde, einsame Strände (~2,5 h, für Naturfans).</span></li>
+      </ul>
+    </article>
+
+    <article class="city reveal">
+      <span class="ribbon">Riga → Vilnius</span>
+      <div class="city-top"><h3>Highlights der Schlussetappe</h3></div>
+      <ul class="sights">
+        <li><b>Schloss Rundāle</b><span>Das „baltische Versailles" bei Bauska — Barockpalast von Rastrelli mit prächtigem Garten. Top-Stop, knapp südlich von Riga.</span></li>
+        <li><b>Bauska</b><span>Burg auf einer Landzunge zwischen zwei Flüssen, nah an Rundāle.</span></li>
+        <li><b>Berg der Kreuze (LT)</b><span>Zehntausende Kreuze auf einem Hügel bei Šiauliai — eindringlich. Kleiner Umweg über die Westroute.</span></li>
+        <li><b>Trakai (LT)</b><span>Märchenhafte rote Inselburg auf einem See, ~30 min vor Vilnius — ideal als letzter Stop vor der Stadt.</span></li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- OSTSEE -->
+  <section>
+    <div class="section-head reveal">
+      <p class="eyebrow">Ab ins Wasser</p>
+      <h2>Strandtage in Jūrmala</h2>
+      <p class="lede">Jūrmala ist praktisch Rigas Stadtstrand — nur ~30 Minuten mit dem Auto. Genug Zeit für ein paar echte Strandtage.</p>
+    </div>
+
+    <div class="beach reveal">
+      <div class="illus"><img class="photo" src="jurmala.jpg" alt="Foto: Strand von Jūrmala" loading="lazy" onerror="this.remove()"><svg viewBox="0 0 800 230" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration des Ostseestrands von Jūrmala mit Kiefern und Holzvilla">
+        <defs><linearGradient id="seaSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a7d8c"/><stop offset=".55" stop-color="#e9c171"/><stop offset="1" stop-color="#f4ecdc"/></linearGradient></defs>
+        <rect width="800" height="230" fill="url(#seaSky)"/>
+        <circle cx="402" cy="120" r="40" fill="#d99a2b" opacity=".92"/>
+        <rect x="0" y="128" width="800" height="46" fill="#0c3b4a" opacity=".5"/>
+        <g stroke="#f4ecdc" stroke-width="2" opacity=".4"><line x1="382" y1="140" x2="422" y2="140"/><line x1="360" y1="150" x2="444" y2="150"/><line x1="372" y1="161" x2="432" y2="161"/></g>
+        <g stroke="#0c3b4a" stroke-width="1.5" opacity=".3"><line x1="40" y1="138" x2="170" y2="138"/><line x1="560" y1="146" x2="710" y2="146"/></g>
+        <path d="M0,168 Q400,156 800,170 V230 H0 Z" fill="#ece0c6"/>
+        <path d="M0,196 Q400,184 800,200 V230 H0 Z" fill="#f4ecdc"/>
+        <g fill="#1f4733">
+          <rect x="96" y="96" width="6" height="74"/><polygon points="99,40 74,96 124,96"/><polygon points="99,58 78,108 120,108"/><polygon points="99,78 82,124 116,124"/>
+          <rect x="146" y="116" width="5" height="56"/><polygon points="148,72 128,118 168,118"/><polygon points="148,92 132,134 164,134"/>
+        </g>
+        <g>
+          <rect x="612" y="120" width="120" height="52" fill="#7a4a2e"/><polygon points="606,120 672,82 738,120" fill="#5e3a24"/>
+          <rect x="700" y="92" width="26" height="40" fill="#7a4a2e"/><polygon points="696,92 713,62 730,92" fill="#5e3a24"/>
+          <g fill="#e9c171"><rect x="628" y="134" width="16" height="20"/><rect x="656" y="134" width="16" height="20"/><rect x="684" y="134" width="16" height="20"/><rect x="706" y="104" width="14" height="16"/></g>
+        </g>
+        <g><rect x="300" y="174" width="3" height="34" fill="#06222b"/><path d="M278,176 Q302,156 326,176 Z" fill="#d99a2b"/></g>
+      </svg></div>
+      <h3>Jūrmala <span class="country">· direkt bei Riga</span></h3>
+      <p>Das größte und beliebteste Seebad des Baltikums: ein weißer, feinsandiger Strand über rund 33 km, gesäumt von hölzernen Jugendstil-Villen und dem Kiefernwald-Park Dzintari. So nah an Riga, dass ihr von der Stadt aus pendeln <em>oder</em> für ein paar Nächte direkt in Jūrmala wohnen könnt. Hinweis: Für die Pkw-Einfahrt ist eine kleine Tagesgebühr fällig (online/Automat).</p>
+
+      <div class="temp-row">
+        <div class="temp"><span class="v">~16 °C</span><span class="k">Wasser, Ø September</span></div>
+        <div class="temp"><span class="v">bis ~20 °C</span><span class="k">an warmen Tagen, früh im Monat</span></div>
+        <div class="temp"><span class="v">~30 min</span><span class="k">Fahrt ab Riga</span></div>
+      </div>
+
+      <p>Direkt nebenan und gut zu kombinieren:</p>
+      <ul>
+        <li><b>Ķemeri-Nationalpark</b> — der Moor-Bohlenweg gleich hinter Jūrmala, schön für einen Vormittag vor dem Strand.</li>
+        <li><b>Pärnu (Estland)</b> — falls ihr auf der Anreise von Tallinn schon einen Strand-Stopp einlegt.</li>
+      </ul>
+
+      <p class="note">Ehrlich gesagt: Anfang September ist das Wasser am wärmsten (~16–20 °C in Ufernähe). Ab etwa dem 10. September kühlen erste Herbststürme die Ostsee ab. Legt eure Schwimm-Tage daher möglichst an den <b>Anfang des Riga-Blocks</b>. Sonnen und lange Strandspaziergänge gehen ohnehin die ganze Zeit.</p>
+    </div>
+  </section>
+
+  <!-- ITINERAR -->
+  <section>
+    <div class="section-head reveal">
+      <p class="eyebrow">Tag für Tag</p>
+      <h2>Vorschlag für 9 Tage</h2>
+      <p class="lede">Tallinn als kurzer Auftakt, vier Nächte rund um Riga & Strand als Herzstück, Vilnius als Abschluss. Süd-gerichtet, kein Zurückfahren.</p>
+    </div>
+
+    <div class="itin reveal">
+      <div class="day">
+        <div class="date"><div class="d">6</div><div class="m">Sep</div><span class="wd">Samstag</span></div>
+        <div class="body"><h4>Anreise Tallinn (TLL)</h4><p>Flug nach Tallinn, Mietwagen abholen, einchecken, erster Bummel durch die Altstadt.</p><span class="pill move">Flug → TLL</span></div>
+      </div>
+      <div class="day">
+        <div class="date"><div class="d">7</div><div class="m">Sep</div><span class="wd">Sonntag</span></div>
+        <div class="body"><h4>Tallinn ganztags</h4><p>Domberg, Kohtuotsa-Aussicht, Stadtmauer, nachmittags Telliskivi oder der Wasserflugzeughafen.</p><span class="pill">Stadt zu Fuß</span></div>
+      </div>
+      <div class="day">
+        <div class="date"><div class="d">8</div><div class="m">Sep</div><span class="wd">Montag</span></div>
+        <div class="body"><h4>Tallinn → Riga</h4><p>Fahrt nach Süden (~310 km / ~4 h), Strand- oder Kaffeestopp in Pärnu. Abends ankommen in Riga.</p><span class="pill move">Fahrt ~4 h</span></div>
+      </div>
+      <div class="day">
+        <div class="date"><div class="d">9</div><div class="m">Sep</div><span class="wd">Dienstag</span></div>
+        <div class="body"><h4>Strandtag Jūrmala</h4><p>Bewusst früh im Riga-Block: Baden, wenn das Wasser am wärmsten ist. Strand, Villen, Kiefernwald — optional vormittags das Ķemeri-Moor.</p><span class="pill swim">Ostsee-Baden</span></div>
+      </div>
+      <div class="day">
+        <div class="date"><div class="d">10</div><div class="m">Sep</div><span class="wd">Mittwoch</span></div>
+        <div class="body"><h4>Riga ganztags</h4><p>Altstadt & Petrikirche, Jugendstilviertel, Zentralmarkt; abends gemütlich in der Stadt.</p><span class="pill">Stadt zu Fuß</span></div>
+      </div>
+      <div class="day">
+        <div class="date"><div class="d">11</div><div class="m">Sep</div><span class="wd">Donnerstag</span></div>
+        <div class="body"><h4>Riga frei wählbar</h4><p>Noch ein Strandtag in Jūrmala — oder Tagesausflug nach Sigulda & Turaida im Gauja-Nationalpark. Ganz nach Wetter.</p><span class="pill swim">Strand oder Ausflug</span></div>
+      </div>
+      <div class="day">
+        <div class="date"><div class="d">12</div><div class="m">Sep</div><span class="wd">Freitag</span></div>
+        <div class="body"><h4>Riga → Vilnius</h4><p>Fahrt in den Süden (~295 km / ~4 h) mit Stopp Schloss Rundāle (und optional Berg der Kreuze). Abends in Vilnius.</p><span class="pill move">Fahrt ~4 h</span></div>
+      </div>
+      <div class="day">
+        <div class="date"><div class="d">13</div><div class="m">Sep</div><span class="wd">Samstag</span></div>
+        <div class="body"><h4>Vilnius & Trakai</h4><p>Altstadt, Gediminas-Turm, Užupis; nachmittags Abstecher zur Inselburg Trakai. Abschiedsessen.</p><span class="pill">Stadt & Stop</span></div>
+      </div>
+      <div class="day">
+        <div class="date"><div class="d">14</div><div class="m">Sep</div><span class="wd">Sonntag</span></div>
+        <div class="body"><h4>Abreise ab Vilnius (VNO)</h4><p>Mietwagen am Flughafen Vilnius abgeben, Rückflug.</p><span class="pill move">Flug ab VNO</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRAKTISCH -->
+  <section>
+    <div class="section-head reveal">
+      <p class="eyebrow">Gut zu wissen</p>
+      <h2>Praktisches</h2>
+    </div>
+    <div class="tips reveal">
+      <div class="tip"><h4><span class="ic">✈️</span> Flüge (Open-Jaw)</h4><p>Hinflug nach Tallinn (TLL), Rückflug ab Vilnius (VNO) als „Gabelflug". Riga liegt mittig — so spart ihr jede Rückfahrt.</p></div>
+      <div class="tip"><h4><span class="ic">🚗</span> Einweg-Mietwagen</h4><p>Abholung in Tallinn, Rückgabe in Vilnius — als Einweg-Anmietung unkompliziert buchbar.</p></div>
+      <div class="tip"><h4><span class="ic">🏖️</span> Wohnen am Strand</h4><p>Für echte Strandtage könnt ihr ein paar Nächte direkt in Jūrmala buchen statt in Riga — der Stadtkern ist trotzdem in 30 min erreichbar.</p></div>
+      <div class="tip"><h4><span class="ic">🛣️</span> Auf der Straße</h4><p>Rechtsverkehr; Abblendlicht ganztags Pflicht. Keine Vignette/Maut für Pkw. Grenzen ohne Kontrolle (Schengen).</p></div>
+      <div class="tip"><h4><span class="ic">🕒</span> Zeit & Sprache</h4><p>Osteuropäische Zeit (MEZ +1 h). Englisch wird in Städten gut verstanden; Russisch verbreitet, Deutsch seltener.</p></div>
+      <div class="tip"><h4><span class="ic">🧥</span> Wetter im Sept.</h4><p>Mild, aber wechselhaft: tagsüber oft 15–20 °C. Wind- und regenfeste Jacke plus Badesachen einpacken.</p></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span class="display">Gute Reise — head reisi · laimīgu ceļojumu · geros kelionės</span>
+  Tallinn → Riga &amp; Jūrmala → Vilnius &nbsp;|&nbsp; 6. – 14. September &nbsp;|&nbsp; Plan ohne Gewähr, Zeiten vor Reise prüfen.
+</footer>
+
+</body>
+</html>

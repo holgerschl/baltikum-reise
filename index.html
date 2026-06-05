@@ -252,6 +252,17 @@
     opacity:.9;
   }
 
+  /* ---------- Wetter-Tabelle ---------- */
+  .wx-wrap{overflow-x:auto; border-radius:14px; box-shadow:0 14px 30px -22px rgba(12,59,74,.5);}
+  table.wx{width:100%; border-collapse:collapse; font-size:.96rem; background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden; min-width:520px;}
+  table.wx thead th{background:var(--sea); color:var(--sand); font-family:'Fraunces',serif; font-weight:600; text-align:left; padding:.8rem .9rem; font-size:.9rem; letter-spacing:.01em;}
+  table.wx td{padding:.7rem .9rem; border-top:1px solid var(--line);}
+  table.wx tbody tr:nth-child(even) td{background:var(--sand);}
+  table.wx tr.trip td{background:rgba(217,154,43,.18);}
+  table.wx .wk{font-weight:600; color:var(--sea); white-space:nowrap;}
+  table.wx tr.trip .wk::after{content:" ★"; color:var(--amber);}
+  .fineprint{font-size:.84rem; color:var(--ink-soft); margin-top:.85rem;}
+
   @media (max-width:560px){
     .day{grid-template-columns:1fr; gap:.5rem;}
     .day .date{display:flex; align-items:baseline; gap:.5rem; text-align:left; min-width:0;}
@@ -521,6 +532,29 @@
 
       <p class="note">Ehrlich gesagt: Anfang September ist das Wasser am wärmsten (~16–20 °C in Ufernähe). Ab etwa dem 10. September kühlen erste Herbststürme die Ostsee ab. Legt eure Schwimm-Tage daher möglichst an den <b>Anfang des Riga-Blocks</b>. Sonnen und lange Strandspaziergänge gehen ohnehin die ganze Zeit.</p>
     </div>
+  </section>
+
+  <!-- WETTER -->
+  <section>
+    <div class="section-head reveal">
+      <p class="eyebrow">Klima-Überblick</p>
+      <h2>Wetter im September, Woche für Woche</h2>
+      <p class="lede">Langjährige Mittelwerte für die Region um Riga. Anfang September ist es am wärmsten und sonnigsten — zum Monatsende wird es kühler und nasser.</p>
+    </div>
+    <div class="wx-wrap reveal">
+      <table class="wx">
+        <thead>
+          <tr><th>Woche</th><th>Ø Tag / Nacht</th><th>Ostsee</th><th>Sonne (h/Tag)</th><th>Niederschlag</th><th>Regentage</th></tr>
+        </thead>
+        <tbody>
+          <tr class="trip"><td class="wk">1.–7. Sep</td><td>18 / 11 °C</td><td>~17 °C</td><td>~7</td><td>~13 mm</td><td>2</td></tr>
+          <tr class="trip"><td class="wk">8.–14. Sep</td><td>17 / 11 °C</td><td>~16 °C</td><td>~6,5</td><td>~15 mm</td><td>3</td></tr>
+          <tr><td class="wk">15.–21. Sep</td><td>16 / 10 °C</td><td>~15 °C</td><td>~6</td><td>~17 mm</td><td>3</td></tr>
+          <tr><td class="wk">22.–30. Sep</td><td>14 / 9 °C</td><td>~14 °C</td><td>~5,5</td><td>~22 mm</td><td>4</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fineprint reveal">★ = eure Reisezeit (6.–14.9.). Werte sind langjährige Durchschnitte; Quellen schwanken, besonders bei den Sonnenstunden (ca. 5,5–8 h/Tag). Vilnius tagsüber meist 1–2 °C wärmer, Tallinn ähnlich wie Riga. Monatssumme Regen ca. 65–70 mm.</p>
   </section>
 
   <!-- ITINERAR -->

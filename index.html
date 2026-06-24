@@ -263,6 +263,25 @@
   table.wx tr.trip .wk::after{content:" ★"; color:var(--amber);}
   .fineprint{font-size:.84rem; color:var(--ink-soft); margin-top:.85rem;}
 
+  /* ---------- Flüge & Logistik ---------- */
+  .crew{display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1.5rem;}
+  .crew span{background:var(--sand-2); color:var(--sea); border:1px solid var(--line); border-radius:999px; padding:.35rem .9rem; font-size:.9rem; font-weight:600;}
+  .flights{display:flex; flex-direction:column; gap:1rem;}
+  .flight{background:#fff; border:1px solid var(--line); border-radius:14px; padding:1.05rem 1.25rem; box-shadow:0 12px 26px -22px rgba(12,59,74,.5);}
+  .flight .fhead{display:flex; flex-wrap:wrap; align-items:baseline; gap:.3rem 1rem; margin-bottom:.6rem;}
+  .flight .fdate{font-family:'Fraunces',serif; font-weight:700; color:var(--amber); font-size:.8rem; text-transform:uppercase; letter-spacing:.12em;}
+  .flight .fpax{margin-left:auto; font-size:.82rem; color:var(--teal); font-weight:600;}
+  .flight .froute{display:flex; align-items:center; gap:1rem; flex-wrap:wrap;}
+  .flight .ap{display:flex; flex-direction:column; line-height:1.18;}
+  .flight .ap b{font-family:'Fraunces',serif; font-size:1.4rem; color:var(--sea);}
+  .flight .ap small{color:var(--ink-soft); font-size:.82rem;}
+  .flight .farrow{color:var(--amber); font-size:1.1rem;}
+  .flight .fmeta{margin-top:.55rem; font-size:.86rem; color:var(--ink-soft);}
+  .flight.ret{border-color:var(--amber); box-shadow:0 12px 28px -18px rgba(217,154,43,.55);}
+  .carbox{margin-top:1.2rem; background:linear-gradient(180deg,#fff,var(--sand)); border:1px solid var(--line); border-radius:14px; padding:1.1rem 1.25rem;}
+  .carbox h4{font-family:'Fraunces',serif; font-weight:600; color:var(--sea); font-size:1.15rem; margin-bottom:.3rem;}
+  .carbox p{color:var(--ink-soft); font-size:.95rem;}
+
   @media (max-width:560px){
     .day{grid-template-columns:1fr; gap:.5rem;}
     .day .date{display:flex; align-items:baseline; gap:.5rem; text-align:left; min-width:0;}
@@ -602,6 +621,78 @@
     <p class="fineprint reveal">★ = eure Reisezeit (6.–14.9.). Werte sind langjährige Durchschnitte; Quellen schwanken, besonders bei den Sonnenstunden (ca. 5,5–8 h/Tag). Vilnius tagsüber meist 1–2 °C wärmer, Tallinn ähnlich wie Riga. Monatssumme Regen ca. 65–70 mm.</p>
   </section>
 
+  <!-- FLÜGE & ANREISE -->
+  <section>
+    <div class="section-head reveal">
+      <p class="eyebrow">Gebucht</p>
+      <h2>Flüge, Anreise & Mietwagen</h2>
+      <p class="lede">Anreise am 6.9. aus zwei Richtungen, Treffpunkt Tallinn — Rückflug am 14.9. alle zusammen ab Vilnius.</p>
+    </div>
+
+    <div class="crew reveal">
+      <span>Holger Schlüter</span><span>Henrik Schlüter</span><span>Marthe Schlüter</span><span>Ulrike Schmidt</span><span>Greta Schlüter</span>
+    </div>
+
+    <div class="flights reveal">
+      <div class="flight">
+        <div class="fhead"><span class="fdate">Mi · 3. Sep · Vorab</span><span class="fpax">Marthe · Ulrike</span></div>
+        <div class="froute">
+          <span class="ap"><b>MUC</b><small>München · ab 10:25</small></span>
+          <span class="farrow">✈</span>
+          <span class="ap"><b>BCN</b><small>Barcelona · an 12:45</small></span>
+        </div>
+        <p class="fmeta">Vueling VY1813 · Economy · 25 kg Gepäck</p>
+      </div>
+
+      <div class="flight">
+        <div class="fhead"><span class="fdate">So · 6. Sep</span><span class="fpax">Greta</span></div>
+        <div class="froute">
+          <span class="ap"><b>Blanes</b><small>per Bus</small></span>
+          <span class="farrow">🚌</span>
+          <span class="ap"><b>BCN</b><small>Flughafen Barcelona</small></span>
+        </div>
+        <p class="fmeta">Bus zum Flughafen — trifft dort Marthe & Ulrike.</p>
+      </div>
+
+      <div class="flight">
+        <div class="fhead"><span class="fdate">So · 6. Sep · Anreise</span><span class="fpax">Ulrike · Marthe · Greta</span></div>
+        <div class="froute">
+          <span class="ap"><b>BCN</b><small>Barcelona · ab 16:40</small></span>
+          <span class="farrow">✈</span>
+          <span class="ap"><b>TLL</b><small>Tallinn · an 21:40</small></span>
+        </div>
+        <p class="fmeta">Ryanair FR9913 · Economy</p>
+      </div>
+
+      <div class="flight">
+        <div class="fhead"><span class="fdate">So · 6. Sep · Anreise</span><span class="fpax">Henrik · Holger</span></div>
+        <div class="froute">
+          <span class="ap"><b>MUC</b><small>München · ab 09:50</small></span>
+          <span class="farrow">✈</span>
+          <span class="ap"><b>TLL</b><small>Tallinn · an 13:10</small></span>
+        </div>
+        <p class="fmeta">airBaltic BT824 · Economy · 2 h 20 min</p>
+      </div>
+
+      <div class="flight ret">
+        <div class="fhead"><span class="fdate">Mo · 14. Sep · Rückflug</span><span class="fpax">alle fünf</span></div>
+        <div class="froute">
+          <span class="ap"><b>VNO</b><small>Vilnius · ab 20:00</small></span>
+          <span class="farrow">✈</span>
+          <span class="ap"><b>MUC</b><small>München · an 21:05</small></span>
+        </div>
+        <p class="fmeta">airBaltic BT927 · Economy · 2 h 05 min</p>
+      </div>
+    </div>
+
+    <div class="carbox reveal">
+      <h4>🚐 Mietwagen</h4>
+      <p>Van über Sixt. Abholung in Tallinn (6.9.), Rückgabe in Vilnius (14.9.).</p>
+    </div>
+
+    <p class="fineprint reveal">Henrik & Holger landen früh um 13:10 in Tallinn und übernehmen den Van; Ulrike, Marthe & Greta kommen abends um 21:40 an — die ersten beiden können also Tallinn schon erkunden und die anderen am Flughafen abholen.</p>
+  </section>
+
   <!-- ITINERAR -->
   <section>
     <div class="section-head reveal">
@@ -613,7 +704,7 @@
     <div class="itin reveal">
       <div class="day">
         <div class="date"><div class="d">6</div><div class="m">Sep</div><span class="wd">Samstag</span></div>
-        <div class="body"><h4>Anreise Tallinn (TLL)</h4><p>Flug nach Tallinn, Mietwagen abholen, einchecken, erster Bummel durch die Altstadt.</p><span class="pill move">Flug → TLL</span></div>
+        <div class="body"><h4>Anreise Tallinn (TLL)</h4><p>Henrik & Holger landen 13:10, holen den Van und erkunden schon die Altstadt. Ulrike, Marthe & Greta kommen 21:40 an — abends ist die Gruppe komplett.</p><span class="pill move">Flug → TLL</span></div>
       </div>
       <div class="day">
         <div class="date"><div class="d">7</div><div class="m">Sep</div><span class="wd">Sonntag</span></div>

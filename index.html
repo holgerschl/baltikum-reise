@@ -282,6 +282,23 @@
   .carbox h4{font-family:'Fraunces',serif; font-weight:600; color:var(--sea); font-size:1.15rem; margin-bottom:.3rem;}
   .carbox p{color:var(--ink-soft); font-size:.95rem;}
 
+  /* ---------- Unterkunfts-Karten ---------- */
+  .accomm{display:flex; flex-direction:column; gap:1.4rem;}
+  .accard{background:#fff; border:1px solid var(--line); border-radius:18px; overflow:hidden; box-shadow:0 14px 32px -22px rgba(12,59,74,.55);}
+  .accard img.acphoto{width:100%; height:240px; object-fit:cover; display:block;}
+  .accard .acbody{padding:1.3rem 1.4rem;}
+  .accard .achead{display:flex; flex-wrap:wrap; align-items:baseline; gap:.4rem 1rem; margin-bottom:.6rem;}
+  .accard h4{font-family:'Fraunces',serif; font-weight:900; color:var(--sea); font-size:1.35rem; line-height:1.1;}
+  .accard .actag{margin-left:auto; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--amber); border:1px solid var(--amber); border-radius:999px; padding:.3rem .8rem; white-space:nowrap;}
+  .accard .acmeta{display:flex; flex-wrap:wrap; gap:.5rem 1.4rem; font-size:.9rem; color:var(--ink-soft); margin-bottom:.8rem;}
+  .accard .acmeta b{color:var(--ink);}
+  .accard .acdesc{font-size:.95rem; color:var(--ink-soft); margin-bottom:.9rem;}
+  .accard .acfacts{list-style:none; display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:.4rem .8rem;}
+  .accard .acfacts li{font-size:.88rem; color:var(--ink-soft); padding-left:1.2rem; position:relative;}
+  .accard .acfacts li::before{content:"✓"; position:absolute; left:0; color:var(--teal); font-weight:bold;}
+  .accard .aclink{display:inline-block; margin-top:.9rem; font-size:.82rem; color:var(--teal); text-decoration:underline;}
+  .accard .acwarning{margin-top:.8rem; font-size:.85rem; font-style:italic; border-left:3px solid var(--amber); padding-left:.8rem; color:#a16b12;}
+
   @media (max-width:560px){
     .day{grid-template-columns:1fr; gap:.5rem;}
     .day .date{display:flex; align-items:baseline; gap:.5rem; text-align:left; min-width:0;}
@@ -595,6 +612,75 @@
       </ul>
 
       <p class="note">Ehrlich gesagt: Anfang September ist das Wasser am wärmsten (~16–20 °C in Ufernähe). Ab etwa dem 10. September kühlen erste Herbststürme die Ostsee ab. Legt eure Schwimm-Tage daher möglichst an den <b>Anfang des Riga-Blocks</b>. Sonnen und lange Strandspaziergänge gehen ohnehin die ganze Zeit.</p>
+    </div>
+  </section>
+
+  <!-- UNTERKÜNFTE -->
+  <section>
+    <div class="section-head reveal">
+      <p class="eyebrow">Wo wir schlafen</p>
+      <h2>Unterkünfte</h2>
+      <p class="lede">Zwei Airbnbs in historischen Altstädten — Tallinn direkt am Rathausplatz, Riga in einem mittelalterlichen Lagerhaus.</p>
+    </div>
+
+    <div class="accomm">
+
+      <div class="accard reveal">
+        <img class="acphoto" src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NDgyNTI1Mjc=/original/53ac6568-0697-4f25-a084-100fc34f7aa6.jpeg?im_w=1200" alt="Mittelalterliche Wohnung am Hauptplatz, Tallinn" loading="lazy">
+        <div class="acbody">
+          <div class="achead">
+            <h4>Main Square Medieval apt · Kamin · Sauna · Altstadt</h4>
+            <span class="actag">Tallinn ★4,85</span>
+          </div>
+          <div class="acmeta">
+            <span>📅 <b>Check-in:</b> So. 6. Sept., ab 16:00</span>
+            <span>📅 <b>Check-out:</b> Di. 8. Sept., bis 11:00</span>
+            <span>👤 <b>Gastgeberin:</b> Karina (Superhost)</span>
+            <span>🏠 <b>Typ:</b> Gesamte Wohnung · 3 Schlafzimmer · 2 Bäder</span>
+          </div>
+          <p class="acdesc">Mittelalterliche Wohnung aus dem 15. Jh., frisch renoviert, direkt am Rathausplatz (Raekoja Plats) — wenige Schritte zu allen Sehenswürdigkeiten. Mit Sauna und Kamin, eigenständiger Check-in per Schlüsselbox.</p>
+          <ul class="acfacts">
+            <li>3 Schlafzimmer (Doppel + 2 Einzel + 3 Einzel)</li>
+            <li>2 Badezimmer (Dusche + Badewanne)</li>
+            <li>Private Sauna</li>
+            <li>Kamin im Wohnzimmer</li>
+            <li>WLAN, vollständige Küche</li>
+            <li>Bis zu 10 Gäste</li>
+            <li>Haustiere erlaubt</li>
+            <li>2. OG, kein Aufzug</li>
+          </ul>
+          <p class="acwarning">⚠ Kein Aufzug. Parkplatz auf Anfrage für 20 €/Nacht verfügbar — muss vorab angefragt werden. Für den Van bitte frühzeitig reservieren.</p>
+          <a class="aclink" href="https://www.airbnb.de/rooms/48252527" target="_blank" rel="noopener">Airbnb-Inserat ansehen →</a>
+        </div>
+      </div>
+
+      <div class="accard reveal">
+        <img class="acphoto" src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6Mzc4MDY3NQ==/original/e474a7cd-1161-45ed-8064-36f7233df956.jpeg?im_w=1200" alt="Rustikales Loft in der Altstadt, Riga" loading="lazy">
+        <div class="acbody">
+          <div class="achead">
+            <h4>Rustic 3 Bedroom Loft in Old Town</h4>
+            <span class="actag">Riga ★4,93</span>
+          </div>
+          <div class="acmeta">
+            <span>📅 <b>Check-in:</b> Di. 8. Sept., ab 16:00</span>
+            <span>📅 <b>Check-out:</b> Sa. 12. Sept., bis 11:00</span>
+            <span>👤 <b>Gastgeber:</b> Guntis (Superhost)</span>
+            <span>🏠 <b>Typ:</b> Gesamtes Loft · 3 Schlafzimmer · 2 Bäder</span>
+          </div>
+          <p class="acdesc">Ehemaliges Lagerhaus aus dem 14. Jh. mit originalem hölzernem Hebewerk im Wohnzimmer — mitten in der Altstadt, Blick auf Jakobskirche, Dom und mittelalterliche Stadtmauer. Drei Ebenen mit Innentreppe. Aldaru iela, 3 Gehminuten zu Domplatz und Livu-Platz.</p>
+          <ul class="acfacts">
+            <li>3 Schlafzimmer (2× Queen + 1 Doppel)</li>
+            <li>2 Badezimmer</li>
+            <li>Blick auf Stadtmauer & Jakobskirche</li>
+            <li>Schnelles WLAN (69 Mbit/s)</li>
+            <li>Eigenständiger Check-in (Codeschloss, 24/7)</li>
+            <li>Bis zu 6 Gäste</li>
+          </ul>
+          <p class="acwarning">⚠ Kein Aufzug. Historische Wendeltreppe zwischen 3. und 4. OG, nur 60 cm breit und 170 m Durchgangshöhe — mit großem Gepäck anspruchsvoll. Kompaktes Gepäck empfohlen. Das hölzerne Hebewerk im Wohnzimmer hat nur 180 cm Unterkante.</p>
+          <a class="aclink" href="https://www.airbnb.de/rooms/3780675" target="_blank" rel="noopener">Airbnb-Inserat ansehen →</a>
+        </div>
+      </div>
+
     </div>
   </section>
 

@@ -37,6 +37,55 @@
     overflow-x:hidden;
   }
 
+  /* ---------- PIN-Sperre ---------- */
+  body.pin-locked > *:not(.pin-gate){display:none;}
+  .pin-gate{
+    min-height:100vh;
+    display:grid;
+    place-items:center;
+    padding:1.5rem;
+    background:
+      radial-gradient(130% 80% at 80% -10%, rgba(217,154,43,.14), transparent 60%),
+      radial-gradient(120% 100% at 0% 110%, rgba(42,125,140,.18), transparent 55%),
+      var(--sand);
+  }
+  .pin-card{
+    width:min(460px,100%);
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:1.4rem;
+    box-shadow:0 18px 38px -24px rgba(12,59,74,.6);
+  }
+  .pin-card h2{
+    font-family:'Fraunces',serif;
+    font-weight:900;
+    color:var(--sea);
+    font-size:1.9rem;
+    line-height:1;
+    margin-bottom:.5rem;
+  }
+  .pin-card p{color:var(--ink-soft); margin-bottom:1rem;}
+  .pin-row{display:flex; gap:.6rem;}
+  .pin-row input{
+    flex:1;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:.7rem .8rem;
+    font-size:1rem;
+    background:var(--sand);
+  }
+  .pin-row button{
+    border:1px solid var(--sea);
+    border-radius:10px;
+    background:var(--sea);
+    color:var(--sand);
+    padding:.7rem 1rem;
+    font-weight:600;
+    cursor:pointer;
+  }
+  .pin-error{min-height:1.2rem; margin-top:.55rem; font-size:.88rem; color:#a42727;}
+
   /* ---------- Wortmarke / Akzente ---------- */
   .eyebrow{
     font-family:'Spectral',serif;
@@ -318,7 +367,20 @@
   }
 </style>
 </head>
-<body>
+<body class="pin-locked">
+
+<div class="pin-gate" id="pinGate" aria-live="polite">
+  <div class="pin-card">
+    <p class="eyebrow">Geschuetzt</p>
+    <h2>Reiseplan entsperren</h2>
+    <p>Bitte PIN eingeben, um den Plan zu oeffnen.</p>
+    <div class="pin-row">
+      <input id="pinInput" type="password" inputmode="numeric" autocomplete="off" placeholder="PIN" aria-label="PIN">
+      <button id="pinUnlock" type="button">Oeffnen</button>
+    </div>
+    <p class="pin-error" id="pinError"></p>
+  </div>
+</div>
 
 <header class="hero">
   <svg class="compass" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.2">
@@ -883,6 +945,62 @@
   <span class="display">Gute Reise — head reisi · laimīgu ceļojumu · geros kelionės</span>
   Tallinn → Riga &amp; Jūrmala → Vilnius &nbsp;|&nbsp; 6. – 14. September &nbsp;|&nbsp; Plan ohne Gewähr, Zeiten vor Reise prüfen.
 </footer>
+
+<script>
+  (function () {
+    const PIN_HASH = "2ba1c15f58702a2bd4369f4fca77d1dd90e8cb3fe1e87fcf91e8d7274ad15925";
+    const STORAGE_KEY = "baltikum_pin_unlock_v1";
+    const body = document.body;
+    const gate = document.getElementById("pinGate");
+    const input = document.getElementById("pinInput");
+    const button = document.getElementById("pinUnlock");
+    const error = document.getElementById("pinError");
+
+    function unlock() {
+      body.classList.remove("pin-locked");
+      if (gate) {
+        gate.remove();
+      }
+    }
+
+    async function sha256(value) {
+      const data = new TextEncoder().encode(value);
+      const digest = await crypto.subtle.digest("SHA-256", data);
+      return Array.from(new Uint8Array(digest)).map(function (b) {
+        return b.toString(16).padStart(2, "0");
+      }).join("");
+    }
+
+    if (localStorage.getItem(STORAGE_KEY) === "ok") {
+      unlock();
+      return;
+    }
+
+    async function tryUnlock() {
+      const pin = (input.value || "").trim();
+      if (!pin) {
+        error.textContent = "Bitte PIN eingeben.";
+        return;
+      }
+      const hash = await sha256(pin);
+      if (hash === PIN_HASH) {
+        localStorage.setItem(STORAGE_KEY, "ok");
+        unlock();
+        return;
+      }
+      error.textContent = "PIN falsch. Bitte erneut versuchen.";
+      input.select();
+    }
+
+    button.addEventListener("click", tryUnlock);
+    input.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        tryUnlock();
+      }
+    });
+    input.focus();
+  }());
+</script>
 
 </body>
 </html>
